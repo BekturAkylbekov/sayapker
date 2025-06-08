@@ -1,7 +1,7 @@
 package com.example.sayapker.dto.request;
 
 public record SignInRequest(
-        String phoneNumber,
+        String email,
         String password
 ) {
 }

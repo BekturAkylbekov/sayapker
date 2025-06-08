@@ -27,7 +27,7 @@ public class SecurityConfig {
     private final UserRepo userRepo;
 
     public  UserDetailsService userDetailsService (){
-        return phoneNumber -> userRepo.findUserByPhoneNumber(phoneNumber).orElseThrow(
+        return email -> userRepo.findUserByEmail(email).orElseThrow(
                 () -> new UsernameNotFoundException("User not found")
         );
     }

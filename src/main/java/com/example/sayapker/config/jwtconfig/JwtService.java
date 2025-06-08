@@ -9,7 +9,6 @@ import com.example.sayapker.repo.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 import java.time.ZonedDateTime;
 
 @Component
@@ -20,12 +19,11 @@ public class JwtService {
     private String secretKey; // java16
     private final UserRepo userRepo;
 
-
     public String generateToken(User user){
         ZonedDateTime now = ZonedDateTime.now();
         return JWT.create()
                 .withClaim("id", user.getId())
-                .withClaim("phoneNumber", user.getPhoneNumber())
+                .withClaim("email", user.getEmail())
                 .withClaim("role", user.getRole().name())
                 .withIssuedAt(now.toInstant())
                 .withExpiresAt(now.plusSeconds(100000000).toInstant())
@@ -35,9 +33,9 @@ public class JwtService {
         Algorithm algorithm = getAlgorithm();
         JWTVerifier verifier = JWT.require(algorithm).build();
         DecodedJWT decodedJWT = verifier.verify(token);
-        String phoneNumber = decodedJWT.getClaim("phoneNumber").asString(); // или переименуй в phoneNumber в generateToken
-        return userRepo.findUserByPhoneNumber(phoneNumber).orElseThrow(
-                () -> new RuntimeException("User not found with phone number: " + phoneNumber)
+        String email = decodedJWT.getClaim("email").asString(); // или переименуй в phoneNumber в generateToken
+        return userRepo.findUserByEmail(email).orElseThrow(
+                () -> new RuntimeException("User not found with email: " + email)
         );
     }
 

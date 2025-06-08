@@ -6,7 +6,7 @@ import lombok.Builder;
 public record SingUpRequest (
    String userName,
    String lastName,
-   String phoneNumber,
+   String email,
    String password,
    String repeatPassword
 ){

@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
 
 @Entity
@@ -32,6 +31,7 @@ public class Animal {
     private String motherId;
     private String country;
     private String extraInfo;
+    private int price;
     @ManyToOne
     private User user;
     private String nameOwner;

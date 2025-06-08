@@ -6,7 +6,6 @@ import com.example.sayapker.enums.Payment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -25,4 +24,5 @@ public class AnimalRequest {
     private String extraInfo;
     private String nameOwner;
     private Payment payment;
+    private int price;
 }
