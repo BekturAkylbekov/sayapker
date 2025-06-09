@@ -16,7 +16,7 @@ public class AuthApi {
     private final AuthService authService;
 
     @PostMapping("/signUp")
-    public AuthResponse singUp(@RequestBody SingUpRequest userRequest) {
+    public SimpleResponse singUp(@RequestBody SingUpRequest userRequest) {
         return authService.signUp(userRequest);
     }
     @PostMapping("/signIn")
@@ -24,6 +24,6 @@ public class AuthApi {
         return authService.signIn(userRequest);
     }
     @PostMapping("/verify")
-    public SimpleResponse verify(@RequestParam String email, @RequestParam String code){
-        return authService.verifyEmail(email, code);}
+    public AuthResponse verify( @RequestParam String code){
+        return authService.confirmSignUp(code);}
 }

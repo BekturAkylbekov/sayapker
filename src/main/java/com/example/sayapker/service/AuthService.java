@@ -6,7 +6,7 @@ import com.example.sayapker.dto.response.AuthResponse;
 import com.example.sayapker.dto.response.SimpleResponse;
 
 public interface AuthService {
-    AuthResponse signUp(SingUpRequest userRequest);
+    SimpleResponse signUp(SingUpRequest userRequest);
     AuthResponse signIn(SignInRequest signInRequest);
-    SimpleResponse verifyEmail(String email, String code);
+    AuthResponse confirmSignUp(String code);
 }

@@ -26,7 +26,6 @@ public class User implements UserDetails {
     private String password;
     private String imageUrl;
     private boolean verified;
-    private String verificationCode;
     @Enumerated(EnumType.STRING)
     private Role role;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
